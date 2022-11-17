@@ -5,7 +5,9 @@ import Volume from "./Components/Volume";
 import HomeButton from "./Components/HomeButton";
 import TopBar from "./Components/TopBar";
 import StartScreen from "./Components/StartScreen";
-import { SystemContext } from "./Context/SystemContext";
+import { SystemContext,WeatherContext } from "./Context/SystemContext";
+import {Routes,Route} from 'react-router-dom'
+import Home from "./Pages/Home/Home";
 
 //Css Process
 
@@ -34,7 +36,7 @@ const PhoneScreen = styled.div`
   width: 96%;
   height: 98%;
   border-radius: 12px;
-  background-color: #e6e6e6;
+  background-color: black;
   position: relative;
   overflow: hidden;
 `;
@@ -45,6 +47,7 @@ function App() {
   const [power,setPower] = useState(false);
   const [volume,setVolume] = useState(20);
   const [date,setDate] = useState(20);
+  const [weather,setWeather] =useState({});
 
 
   const systemData = {
@@ -56,17 +59,29 @@ function App() {
     setVolume
   }
 
+  const weatherData = {
+    weather,
+    setWeather
+  }
+
   return (
     <PhoneBox>
       <SystemContext.Provider value={systemData}>
         <Volume/>
         <Power/>
         <PhoneBack>
+          <WeatherContext.Provider value={weatherData}>
           <PhoneScreen>
             <StartScreen/>
+
+            <Routes>
+              <Route path="/" element={<Home/>}/>
+            </Routes>
+
             <TopBar/>
             <HomeButton/>
           </PhoneScreen>
+          </WeatherContext.Provider>
         </PhoneBack>
       </SystemContext.Provider>
     </PhoneBox>

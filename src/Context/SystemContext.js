@@ -1,5 +1,6 @@
 import { createContext,useContext } from "react";
 
 const SystemContext = createContext();
+const WeatherContext = createContext();
 
-export {SystemContext,useContext}
+export {SystemContext,WeatherContext,useContext}

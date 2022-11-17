@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react'
 import styled from 'styled-components'
 import {HiOutlineHome} from 'react-icons/hi'
 import { SystemContext,useContext } from '../Context/SystemContext'
+import {Link} from 'react-router-dom'
 
 const ButtonBox = styled.button`
     width: 80px;
@@ -44,9 +45,12 @@ function HomeButton() {
         }
     },[power]);
   return (
-    <ButtonBox display={button}>
-        <HomeIcon/>
-    </ButtonBox>
+    <Link>
+        <ButtonBox display={button}>
+            <HomeIcon/>
+        </ButtonBox>
+    </Link>
+    
   )
 }
 
