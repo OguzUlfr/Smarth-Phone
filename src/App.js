@@ -8,6 +8,7 @@ import StartScreen from "./Components/StartScreen";
 import { SystemContext,WeatherContext } from "./Context/SystemContext";
 import {Routes,Route} from 'react-router-dom'
 import Home from "./Pages/Home/Home";
+import Main from "./Pages/App/Main";
 
 //Css Process
 
@@ -76,6 +77,7 @@ function App() {
 
             <Routes>
               <Route path="/" element={<Home/>}/>
+              <Route path="/app" element={<Main/>}/>
             </Routes>
 
             <TopBar/>

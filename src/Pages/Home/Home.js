@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Widget from './Components/Widget';
-import Apps from './Components/Apps'
+import Apps from './Components/AppGroup'
+import QuickApp from './Components/QuickApp';
 
 const HomeBox = styled.div`
     width: 100%;
@@ -11,6 +12,7 @@ const HomeBox = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
+    position: relative;
 `;
 
 
@@ -20,6 +22,7 @@ function Home() {
     <HomeBox>
         <Widget/>
         <Apps/>
+        <QuickApp/>
     </HomeBox>
   )
 }
