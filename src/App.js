@@ -9,6 +9,9 @@ import { SystemContext,WeatherContext } from "./Context/SystemContext";
 import {Routes,Route} from 'react-router-dom'
 import Home from "./Pages/Home/Home";
 import Main from "./Pages/App/Main";
+import DateBlock from "./Pages/App/DateBlock";
+import Gallery from "./Pages/App/Gallery";
+
 
 //Css Process
 
@@ -48,6 +51,7 @@ function App() {
   const [power,setPower] = useState(false);
   const [volume,setVolume] = useState(20);
   const [date,setDate] = useState(20);
+  const [backgroundImage,setBackgroundImage] = useState();
   const [weather,setWeather] =useState({});
 
 
@@ -57,7 +61,9 @@ function App() {
     date,
     setDate,
     volume,
-    setVolume
+    setVolume,
+    backgroundImage,
+    setBackgroundImage
   }
 
   const weatherData = {
@@ -77,7 +83,10 @@ function App() {
 
             <Routes>
               <Route path="/" element={<Home/>}/>
-              <Route path="/app" element={<Main/>}/>
+              <Route path="/App" element={<Main/>}>
+                <Route path="Calender" element={<DateBlock/>}/>
+                <Route path="Gallery" element={<Gallery/>}/>
+              </Route>
             </Routes>
 
             <TopBar/>

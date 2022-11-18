@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import DateBlock from './DateBlock.js'
+import { Outlet } from 'react-router-dom';
+import AnimationPage from '../../AnimationPage';
 
 const AppBack = styled.div`
     width: 100%;
@@ -12,16 +13,17 @@ const AppContentBox = styled.div`
     width: 100%;
     height: 100%;
     padding: 40px 0px;
-    position: relative;
 `;
 
 
 function Main() {
   return (
     <AppBack>
+      <AnimationPage>
         <AppContentBox>
-            <DateBlock/>
+          <Outlet/>
         </AppContentBox>
+      </AnimationPage>
     </AppBack>
   )
 }

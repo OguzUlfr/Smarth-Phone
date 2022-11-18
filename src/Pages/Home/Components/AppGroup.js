@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import apps from './AppList';
+import { Link } from 'react-router-dom';
 
 const AppBox = styled.div`
     width: 90%;
@@ -56,12 +57,14 @@ function AppList() {
     <AppBox>
         {apps &&
             apps.map(app => 
-            <App key={app.id}>
-                <AppIcon bg={app.color}>
-                    {app.library}
-                </AppIcon>
-                <AppName>{app.name}</AppName>
-            </App>
+            <Link to={`App/${app.name}`} style={{textDecoration : 'none'}}  key={app.id}>
+                <App>
+                    <AppIcon bg={app.color}>
+                        {app.library}
+                    </AppIcon>
+                    <AppName>{app.name}</AppName>
+                </App>
+            </Link>
             )
         }
     </AppBox>

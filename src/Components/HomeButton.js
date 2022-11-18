@@ -28,6 +28,7 @@ const HomeIcon = styled(HiOutlineHome)`
     color: #e6e6e6;
     &:hover{
         padding: 8px;
+        color: #EC255A;
     }
 `;
 
@@ -45,7 +46,7 @@ function HomeButton() {
         }
     },[power]);
   return (
-    <Link>
+    <Link to='/'>
         <ButtonBox display={button}>
             <HomeIcon/>
         </ButtonBox>

@@ -101,6 +101,7 @@ const AddButton = styled(RiAddCircleLine)`
   cursor: pointer;
   position: absolute;
   right: 30px;
+  bottom: 40px;
   z-index: 3;
   &:hover{
     filter: drop-shadow(0px 0px 2px #F05454);
@@ -129,11 +130,13 @@ function DateBlock() {
           date: value.toString().slice(4,15),
           text: inputValue
         }]));
+        closeModal();
       }else{
         localStorage.setItem('activitys', JSON.stringify([{
           date: value.toString().slice(4,15),
           text: inputValue
         }]));
+        closeModal();
       }
       
     }
@@ -151,7 +154,7 @@ function DateBlock() {
         <ActivityList>
           {activity &&
               activity.filter(function (el) {
-                return el.date == value.toString().slice(4,15)
+                return el.date === value.toString().slice(4,15)
               }).map((item,key)=> 
                 <ListItem key={key}>{item.text}</ListItem>
               )

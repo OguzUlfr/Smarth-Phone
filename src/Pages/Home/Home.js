@@ -2,11 +2,12 @@ import styled from 'styled-components'
 import Widget from './Components/Widget';
 import Apps from './Components/AppGroup'
 import QuickApp from './Components/QuickApp';
+import { SystemContext,useContext } from '../../Context/SystemContext';
 
 const HomeBox = styled.div`
     width: 100%;
     height: 100%;
-    background : url('https://images.pexels.com/photos/775203/pexels-photo-775203.jpeg?auto=compress&cs=tinysrgb&w=1600') no-repeat center;
+    background : url(${props => props.bgImage}) no-repeat center;
     background-size: cover;
     padding: 40px 10px 0px 10px;
     display: flex;
@@ -17,11 +18,12 @@ const HomeBox = styled.div`
 
 
 function Home() {
+  const {backgroundImage} = useContext(SystemContext);
 
   return (
-    <HomeBox>
+    <HomeBox bgImage={backgroundImage}>
         <Widget/>
-        <Apps/>
+          <Apps/>
         <QuickApp/>
     </HomeBox>
   )
