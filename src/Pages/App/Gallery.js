@@ -64,7 +64,6 @@ function Gallery() {
         axios.get('https://api.unsplash.com/photos/?client_id=Cf82jc2n-o8MqiqVfKVYirQvKCy3AFWIwQmci_8FnJU&per_page=20')
         .then(response => {
             setData(response.data);
-            console.log(response.data);
         });
     },[]);
   return (

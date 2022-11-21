@@ -29,7 +29,6 @@ body{
 *::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #D62929;
 }
 
@@ -87,4 +86,9 @@ body{
 }
 .react-calendar__navigation button{
   background: #414141 !important;
+}
+#ddlProducts *
+{
+ border-radius: 15px;
+ background-color: red;
 }

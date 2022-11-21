@@ -11,6 +11,7 @@ import Home from "./Pages/Home/Home";
 import Main from "./Pages/App/Main";
 import DateBlock from "./Pages/App/DateBlock";
 import Gallery from "./Pages/App/Gallery";
+import Clock from "./Pages/App/Clock/Clock";
 
 
 //Css Process
@@ -51,7 +52,7 @@ function App() {
   const [power,setPower] = useState(false);
   const [volume,setVolume] = useState(20);
   const [date,setDate] = useState(20);
-  const [backgroundImage,setBackgroundImage] = useState();
+  const [backgroundImage,setBackgroundImage] = useState('https://i.ibb.co/CVLDP3S/pexels-eberhard-grossgasteiger-1366921-1.jpg');
   const [weather,setWeather] =useState({});
 
 
@@ -86,6 +87,7 @@ function App() {
               <Route path="/App" element={<Main/>}>
                 <Route path="Calender" element={<DateBlock/>}/>
                 <Route path="Gallery" element={<Gallery/>}/>
+                <Route path="Clock" element={<Clock/>}/>
               </Route>
             </Routes>
 

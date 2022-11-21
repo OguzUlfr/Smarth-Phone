@@ -12,6 +12,7 @@ const ActivityBox = styled.div`
   flex-direction: column;
   margin: auto;
   padding: 0px 10px;
+  position: relative;
 `;
 
 const Title = styled.p`
@@ -101,7 +102,7 @@ const AddButton = styled(RiAddCircleLine)`
   cursor: pointer;
   position: absolute;
   right: 30px;
-  bottom: 40px;
+  bottom: -180px;
   z-index: 3;
   &:hover{
     filter: drop-shadow(0px 0px 2px #F05454);
@@ -160,6 +161,7 @@ function DateBlock() {
               )
           }
         </ActivityList>
+        <AddButton  onClick={()=>setModalView(true)}/>
       </ActivityBox>  
       <ActivityAddBox view={modalView}>
           <AddBoxTitle>Add Activity</AddBoxTitle>
@@ -169,7 +171,6 @@ function DateBlock() {
           <CloseButton onClick={closeModal}>Close</CloseButton>
           <SubmitButton onClick={AddActivity}>ADD</SubmitButton>
       </ActivityAddBox>
-      <AddButton  onClick={()=>setModalView(true)}/>
     </>
   )
 }
