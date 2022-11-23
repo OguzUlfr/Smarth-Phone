@@ -2,8 +2,9 @@ import React from 'react'
 import {RiShutDownLine} from 'react-icons/ri'
 import styled from 'styled-components'
 import { SystemContext,useContext } from '../Context/SystemContext';
+import { Link } from 'react-router-dom';
 
-const PowerButton = styled.button`
+const PowerButton = styled(Link)`
     width: 100px;
     height: 60px;
     top: 230px;
@@ -33,8 +34,9 @@ const PowerIcon = styled(RiShutDownLine)`
 
 function Power() {
     const {power,setPower} = useContext(SystemContext);
+    
   return (
-    <PowerButton  pwr={power} onClick={()=>setPower(power ? false : true)}>
+    <PowerButton to='/'  pwr={power} onClick={()=>setPower(power ? false : true)}>
         <PowerIcon/>
     </PowerButton>
   )

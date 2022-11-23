@@ -12,6 +12,9 @@ import Main from "./Pages/App/Main";
 import DateBlock from "./Pages/App/DateBlock";
 import Gallery from "./Pages/App/Gallery";
 import Clock from "./Pages/App/Clock/Clock";
+import Alarm from "./Pages/App/Clock/Alarm";
+import StopWatch from "./Pages/App/Clock/StopWatch";
+import Timer from "./Pages/App/Clock/Timer";
 
 
 //Css Process
@@ -87,7 +90,11 @@ function App() {
               <Route path="/App" element={<Main/>}>
                 <Route path="Calender" element={<DateBlock/>}/>
                 <Route path="Gallery" element={<Gallery/>}/>
-                <Route path="Clock" element={<Clock/>}/>
+                <Route path="Clock" element={<Clock/>}>
+                    <Route path="" element={<Alarm/>}/>
+                    <Route path="stopwatch" element={<StopWatch/>}/>
+                    <Route path="timer" element={<Timer/>}/>
+                </Route>
               </Route>
             </Routes>
 
