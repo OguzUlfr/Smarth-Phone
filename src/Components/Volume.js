@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import {BsFillVolumeDownFill,BsFillVolumeUpFill} from 'react-icons/bs';
 import { useContext } from 'react';

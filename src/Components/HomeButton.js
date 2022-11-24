@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import styled from 'styled-components'
 import {HiOutlineHome} from 'react-icons/hi'
-import { SystemContext,useContext } from '../Context/SystemContext'
+import { SystemContext, MusicContext ,useContext } from '../Context/SystemContext'
 import {Link} from 'react-router-dom'
 
 const ButtonBox = styled.button`
@@ -34,7 +34,9 @@ const HomeIcon = styled(HiOutlineHome)`
 
 function HomeButton() {
     const {power} = useContext(SystemContext);
+    const {music,setMusic} = useContext(MusicContext);
     const [button,setButton] = useState(false);
+    
     useEffect(()=>{
         if(power){
             setTimeout(() => {
@@ -45,8 +47,14 @@ function HomeButton() {
             setButton(false);
         }
     },[power]);
+
+    const closeMusic = () => {
+        music && music.pause();
+        setMusic(false);
+    }
+
   return (
-    <Link to='/'>
+    <Link to='/' onClick={closeMusic}>
         <ButtonBox display={button}>
             <HomeIcon/>
         </ButtonBox>

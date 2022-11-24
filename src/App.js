@@ -5,7 +5,7 @@ import Volume from "./Components/Volume";
 import HomeButton from "./Components/HomeButton";
 import TopBar from "./Components/TopBar";
 import StartScreen from "./Components/StartScreen";
-import { SystemContext,WeatherContext } from "./Context/SystemContext";
+import { SystemContext,WeatherContext, MusicContext} from "./Context/SystemContext";
 import {Routes,Route} from 'react-router-dom'
 import Home from "./Pages/Home/Home";
 import Main from "./Pages/App/Main";
@@ -15,6 +15,9 @@ import Clock from "./Pages/App/Clock/Clock";
 import Alarm from "./Pages/App/Clock/Alarm";
 import StopWatch from "./Pages/App/Clock/StopWatch";
 import Timer from "./Pages/App/Clock/Timer";
+import Music from "./Pages/App/Music/Music";
+import MusicStartScreen from "./Pages/App/Music/MusicStartScreen";
+import MusicList from "./Pages/App/Music/MusicList";
 
 
 //Css Process
@@ -55,6 +58,7 @@ function App() {
   const [power,setPower] = useState(false);
   const [volume,setVolume] = useState(20);
   const [date,setDate] = useState(20);
+  const [music,setMusic] = useState(false);
   const [backgroundImage,setBackgroundImage] = useState('https://i.ibb.co/CVLDP3S/pexels-eberhard-grossgasteiger-1366921-1.jpg');
   const [weather,setWeather] =useState({});
 
@@ -70,6 +74,11 @@ function App() {
     setBackgroundImage
   }
 
+  const musicData = {
+    music,
+    setMusic
+  }
+
   const weatherData = {
     weather,
     setWeather
@@ -82,25 +91,29 @@ function App() {
         <Power/>
         <PhoneBack>
           <WeatherContext.Provider value={weatherData}>
+          <MusicContext.Provider value={musicData}>
           <PhoneScreen>
             <StartScreen/>
-
-            <Routes>
-              <Route path="/" element={<Home/>}/>
-              <Route path="/App" element={<Main/>}>
-                <Route path="Calender" element={<DateBlock/>}/>
-                <Route path="Gallery" element={<Gallery/>}/>
-                <Route path="Clock" element={<Clock/>}>
-                    <Route path="" element={<Alarm/>}/>
-                    <Route path="stopwatch" element={<StopWatch/>}/>
-                    <Route path="timer" element={<Timer/>}/>
+              <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/App" element={<Main/>}>
+                  <Route path="Calender" element={<DateBlock/>}/>
+                  <Route path="Gallery" element={<Gallery/>}/>
+                  <Route path="Clock" element={<Clock/>}>
+                      <Route path="" element={<Alarm/>}/>
+                      <Route path="stopwatch" element={<StopWatch/>}/>
+                      <Route path="timer" element={<Timer/>}/>
+                  </Route>
+                  <Route path="Music" element={<Music/>}>
+                    <Route path="" element={<MusicStartScreen/>}/>
+                    <Route path=":searchKey" element={<MusicList/>}/>
+                  </Route>
                 </Route>
-              </Route>
-            </Routes>
-
+              </Routes>
             <TopBar/>
             <HomeButton/>
           </PhoneScreen>
+          </MusicContext.Provider>
           </WeatherContext.Provider>
         </PhoneBack>
       </SystemContext.Provider>
