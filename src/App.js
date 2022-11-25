@@ -5,7 +5,7 @@ import Volume from "./Components/Volume";
 import HomeButton from "./Components/HomeButton";
 import TopBar from "./Components/TopBar";
 import StartScreen from "./Components/StartScreen";
-import { SystemContext,WeatherContext, MusicContext} from "./Context/SystemContext";
+import { SystemContext,WeatherContext,LocationContext, MusicContext} from "./Context/SystemContext";
 import {Routes,Route} from 'react-router-dom'
 import Home from "./Pages/Home/Home";
 import Main from "./Pages/App/Main";
@@ -18,6 +18,10 @@ import Timer from "./Pages/App/Clock/Timer";
 import Music from "./Pages/App/Music/Music";
 import MusicStartScreen from "./Pages/App/Music/MusicStartScreen";
 import MusicList from "./Pages/App/Music/MusicList";
+import Taxi from "./Pages/App/Taxi.js/Taxi";
+import LocationAccessError from "./Pages/App/Taxi.js/LocationAccessError";
+import Destination from "./Pages/App/Taxi.js/Destination";
+import GetTaxi from "./Pages/App/Taxi.js/GetTaxi";
 
 
 //Css Process
@@ -61,6 +65,7 @@ function App() {
   const [music,setMusic] = useState(false);
   const [backgroundImage,setBackgroundImage] = useState('https://i.ibb.co/CVLDP3S/pexels-eberhard-grossgasteiger-1366921-1.jpg');
   const [weather,setWeather] =useState({});
+  const [userLocation,setUserLocation] = useState(false);
 
 
   const systemData = {
@@ -84,6 +89,11 @@ function App() {
     setWeather
   }
 
+  const locationData = {
+    userLocation,
+    setUserLocation
+  }
+
   return (
     <PhoneBox>
       <SystemContext.Provider value={systemData}>
@@ -94,6 +104,7 @@ function App() {
           <MusicContext.Provider value={musicData}>
           <PhoneScreen>
             <StartScreen/>
+            <LocationContext.Provider value={locationData}>
               <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/App" element={<Main/>}>
@@ -108,8 +119,13 @@ function App() {
                     <Route path="" element={<MusicStartScreen/>}/>
                     <Route path=":searchKey" element={<MusicList/>}/>
                   </Route>
+                  <Route path="Taxi" element={<Taxi/>}>
+                    <Route path="" element={userLocation ? <Destination/> :<LocationAccessError/>}/>
+                    <Route path=":location" element={<GetTaxi/>}/>
+                  </Route>
                 </Route>
               </Routes>
+              </LocationContext.Provider>
             <TopBar/>
             <HomeButton/>
           </PhoneScreen>
