@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { WeatherContext,useContext } from '../../Context/SystemContext';
 
@@ -118,7 +118,7 @@ function Weather() {
             {weather.days &&
                 weather.days.map((item,key) =>
                 key > 0 &&
-                <ListItem>
+                <ListItem key={key}>
                     <ListItemDay>{item.datetime}</ListItemDay>
                     <ListItemIcon src={process.env.PUBLIC_URL + `/weather-icon/${item.icon}.svg`}/>
                     <ListItemTemp>{item.temp}<ListItemTempMin>/ {item.tempmin}</ListItemTempMin></ListItemTemp>

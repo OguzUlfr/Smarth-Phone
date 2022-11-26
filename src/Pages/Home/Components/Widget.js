@@ -114,7 +114,7 @@ function Widget() {
             <City><CityIcon/>İstanbul</City>
         </Date>
         <Weather to='/App/Weather'>
-            {weather &&
+            {weather.days &&
             <>
                 <WeatherIcon src={process.env.PUBLIC_URL + `/weather-icon/${weather.days[0].icon}.svg`}/>
                 <Temp>{weather.days[0].temp}</Temp>

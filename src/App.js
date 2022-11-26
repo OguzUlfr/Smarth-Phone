@@ -26,6 +26,9 @@ import Note from "./Pages/App/Note/Note";
 import NoteAdd from "./Pages/App/Note/NoteAdd";
 import NoteList from "./Pages/App/Note/NoteList";
 import Weather from "./Pages/App/Weather";
+import Movie from "./Pages/App/Movie/Movie";
+import MovieList from './Pages/App/Movie/MovieList';
+import MovieDetail from './Pages/App/Movie/MovieDetail'
 
 
 //Css Process
@@ -136,7 +139,12 @@ function App() {
                     <Route path=":id" element={<NoteAdd/>}/>
                   </Route>
 
-                  <Route path="Weather" element={<Weather/>}></Route>
+                  <Route path="Weather" element={<Weather/>}/>
+
+                  <Route path="Movie" element={<Movie/>}>
+                    <Route path="" element={<MovieList/>}/>
+                    <Route path=":id" element={<MovieDetail/>}/>
+                  </Route>
 
                 </Route>
               </Routes>
