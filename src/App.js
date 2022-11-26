@@ -22,6 +22,10 @@ import Taxi from "./Pages/App/Taxi.js/Taxi";
 import LocationAccessError from "./Pages/App/Taxi.js/LocationAccessError";
 import Destination from "./Pages/App/Taxi.js/Destination";
 import GetTaxi from "./Pages/App/Taxi.js/GetTaxi";
+import Note from "./Pages/App/Note/Note";
+import NoteAdd from "./Pages/App/Note/NoteAdd";
+import NoteList from "./Pages/App/Note/NoteList";
+import Weather from "./Pages/App/Weather";
 
 
 //Css Process
@@ -110,19 +114,30 @@ function App() {
                 <Route path="/App" element={<Main/>}>
                   <Route path="Calender" element={<DateBlock/>}/>
                   <Route path="Gallery" element={<Gallery/>}/>
+
                   <Route path="Clock" element={<Clock/>}>
                       <Route path="" element={<Alarm/>}/>
                       <Route path="stopwatch" element={<StopWatch/>}/>
                       <Route path="timer" element={<Timer/>}/>
                   </Route>
+
                   <Route path="Music" element={<Music/>}>
                     <Route path="" element={<MusicStartScreen/>}/>
                     <Route path=":searchKey" element={<MusicList/>}/>
                   </Route>
+
                   <Route path="Taxi" element={<Taxi/>}>
                     <Route path="" element={userLocation ? <Destination/> :<LocationAccessError/>}/>
                     <Route path=":location" element={<GetTaxi/>}/>
                   </Route>
+
+                  <Route path="Note" element={<Note/>}>
+                    <Route path="" element={<NoteList/>}/>
+                    <Route path=":id" element={<NoteAdd/>}/>
+                  </Route>
+
+                  <Route path="Weather" element={<Weather/>}></Route>
+
                 </Route>
               </Routes>
               </LocationContext.Provider>

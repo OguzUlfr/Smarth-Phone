@@ -68,17 +68,18 @@ const Weather = styled(Link)`
 `;
 
 const WeatherIcon = styled.img`
-    width: 70px;
+    width: 90px;
 `;
 
 const Temp = styled.div`
     font-weight: 600;
     padding : 5px 0px;
+    font-size: 1.6rem;
 `;
 
 const TempDay = styled.div`
     font-weight: 400;
-    font-size: 0.7rem;
+    font-size: 1rem;
     opacity: 0.8;
 `;
 
@@ -98,16 +99,12 @@ function Widget() {
     },[]);
 
     useEffect(()=>{
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=İstanbul&appid=5cc3721ca34d9b1226b66e7a436c12ed&units=metric`)
+        axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/İstanbul/next7days?unitGroup=metric&include=days&key=ERBAQ8A68T43ZB5KE4STYYSQS&contentType=json`)
         .then(response => {
-            setWeather({
-                icon: response.data.weather[0].icon,
-                temp: response.data.main.temp,
-                temp_max: response.data.main.temp_max,
-                temp_min: response.data.main.temp_min
-            });
+            setWeather(response.data);
         });
     },[]);
+
 
   return (
     <WidgetBox>
@@ -116,12 +113,12 @@ function Widget() {
             <Day>{day}</Day>
             <City><CityIcon/>İstanbul</City>
         </Date>
-        <Weather>
+        <Weather to='/App/Weather'>
             {weather &&
             <>
-                <WeatherIcon src={`http://openweathermap.org/img/w/${weather.icon}.png`}/>
-                <Temp>{weather.temp}</Temp>
-                <TempDay>{`${weather.temp_max} / ${weather.temp_min}`}</TempDay>
+                <WeatherIcon src={process.env.PUBLIC_URL + `/weather-icon/${weather.days[0].icon}.svg`}/>
+                <Temp>{weather.days[0].temp}</Temp>
+                <TempDay>{`${weather.days[0].tempmax} / ${weather.days[0].tempmin}`}</TempDay>
             </>
             }
         </Weather>
