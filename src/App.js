@@ -29,7 +29,9 @@ import Weather from "./Pages/App/Weather";
 import Movie from "./Pages/App/Movie/Movie";
 import MovieList from './Pages/App/Movie/MovieList';
 import MovieDetail from './Pages/App/Movie/MovieDetail'
-
+import Food from "./Pages/App/Food/Food";
+import FoodList from "./Pages/App/Food/FoodList";
+import FoodBasket from "./Pages/App/Food/FoodBasket";
 
 //Css Process
 
@@ -144,6 +146,11 @@ function App() {
                   <Route path="Movie" element={<Movie/>}>
                     <Route path="" element={<MovieList/>}/>
                     <Route path=":id" element={<MovieDetail/>}/>
+                  </Route>
+
+                  <Route path="Food" element={<Food/>}>
+                    <Route path="" element={<FoodList/>}/>
+                    <Route path="basket" element={<FoodBasket/>}/>
                   </Route>
 
                 </Route>
