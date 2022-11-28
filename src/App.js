@@ -32,6 +32,10 @@ import MovieDetail from './Pages/App/Movie/MovieDetail'
 import Food from "./Pages/App/Food/Food";
 import FoodList from "./Pages/App/Food/FoodList";
 import FoodBasket from "./Pages/App/Food/FoodBasket";
+import Youtube from "./Pages/App/Youtube/Youtube";
+import YoutubeVideoList from './Pages/App/Youtube/YoutubeVideoList'
+
+
 
 //Css Process
 
@@ -151,6 +155,10 @@ function App() {
                   <Route path="Food" element={<Food/>}>
                     <Route path="" element={<FoodList/>}/>
                     <Route path="basket" element={<FoodBasket/>}/>
+                  </Route>
+
+                  <Route path="YouTube" element={<Youtube/>}>
+                    <Route path="" element={<YoutubeVideoList/>}/>
                   </Route>
 
                 </Route>
