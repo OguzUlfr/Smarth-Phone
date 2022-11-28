@@ -95,3 +95,7 @@ body{
 .deneme{
   color: red;
 }
+.video-stream{
+  width: 720px !important;
+  height: 380px !important;
+}

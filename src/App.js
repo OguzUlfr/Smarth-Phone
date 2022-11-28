@@ -34,6 +34,7 @@ import FoodList from "./Pages/App/Food/FoodList";
 import FoodBasket from "./Pages/App/Food/FoodBasket";
 import Youtube from "./Pages/App/Youtube/Youtube";
 import YoutubeVideoList from './Pages/App/Youtube/YoutubeVideoList'
+import Video from "./Pages/App/Youtube/Video";
 
 
 
@@ -159,6 +160,7 @@ function App() {
 
                   <Route path="YouTube" element={<Youtube/>}>
                     <Route path="" element={<YoutubeVideoList/>}/>
+                    <Route path=":ytId" element={<Video/>}/>
                   </Route>
 
                 </Route>

@@ -176,7 +176,7 @@ function StopWatch() {
                 minute: currentTime.minute - splitTime.minute,
                 second: currentTime.second - splitTime.second,
                 milisecond: currentTime.milisecond - splitTime.milisecond
-            }
+            };
             sessionStorage.setItem('split_time',JSON.stringify([splitTimeItem,...JSON.parse(sessionStorage.getItem('split_time'))]));
             setSplitTime(currentTime);
 
@@ -186,7 +186,7 @@ function StopWatch() {
                 minute: currentTime.minute - splitTime.minute,
                 second: currentTime.second - splitTime.second,
                 milisecond: currentTime.milisecond - splitTime.milisecond
-            }
+            };
             sessionStorage.setItem('split_time',JSON.stringify([splitTimeItem]));
             setSplitTime(splitTimeItem);
         }
@@ -211,7 +211,7 @@ function StopWatch() {
         </WatchControllBox>
         <SplitList>
             {splitList
-            ?   splitList.map((item, key)=> 
+            ? splitList.map((item, key)=> 
                 <ListItem key={key}>
                     <ListItemIcon/>
                     {item.hours < 10 ? `0${item.hours}` : item.hours}:

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import {BiSearchAlt2} from 'react-icons/bi'
+import { Link } from 'react-router-dom';
 
 const SearchBox = styled.div`
   width: 100%;
@@ -118,7 +119,10 @@ function YoutubeVideoList() {
     const searchVideo = () => {
       try {
         axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${searchValue}&type=video&key=AIzaSyBqD-rmmXjPYSM3YSPsvBT2BHPxdineGko`)
-        .then(response => setData(response.data.items));
+        .then(response => {
+          setData(response.data.items)
+          console.log(response.data.items)
+        });
       } catch (error) {
         console.log(error);
       }
@@ -143,18 +147,20 @@ function YoutubeVideoList() {
       <ListBox>
       {data &&
           data.map( (item, key) => 
-          <ListItem key={key}>
-            <ListItemThumb  thumbImage={item.snippet.thumbnails.high.url}/>
-            <AboutBox>
-              <ChannelThumb/>
-              <VideoAbout>
-                <VideoTitle>{item.snippet.title}</VideoTitle>
-                <DetailBox>
-                  <ChannelName>{item.snippet.channelTitle}</ChannelName>
-                </DetailBox>
-              </VideoAbout>
-            </AboutBox>
-          </ListItem>
+          <Link to={typeof item.id === 'string' ? item.id : item.id.videoId} key={key} style={{textDecoration: 'none'}}>
+            <ListItem>
+              <ListItemThumb  thumbImage={item.snippet.thumbnails.high.url}/>
+              <AboutBox>
+                <ChannelThumb/>
+                <VideoAbout>
+                  <VideoTitle>{item.snippet.title}</VideoTitle>
+                  <DetailBox>
+                    <ChannelName>{item.snippet.channelTitle}</ChannelName>
+                  </DetailBox>
+                </VideoAbout>
+              </AboutBox>
+            </ListItem>
+          </Link>
         )
       }
       </ListBox>
