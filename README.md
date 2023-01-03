@@ -1,4 +1,4 @@
-# Smath Phone
+# Smarth Phone
 
 Hello everyone
 
