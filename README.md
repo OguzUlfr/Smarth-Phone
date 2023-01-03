@@ -4,7 +4,7 @@ Hello everyone
 
 In my project, I developed an android simulation application that you can run on the web browser using ReactJS. With this application, you can examine an android application that uses react-based APIs. If you want to review it live, you can click on the link in the about section of the project or the link I wrote below.
 
-Live : https://cheerful-bonbon-243e7e.netlify.app/
+Live : (https://reactsmartphone.netlify.app/)
 
 APIs used :
 | Plugin | README |
